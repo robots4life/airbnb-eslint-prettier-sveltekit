@@ -271,3 +271,16 @@ Done in 5.1s
 now we can install eslint-plugin-prettier as dev dependency without errors
 
 `pnpm install -D eslint-plugin-prettier`
+
+```bash
+Packages: +37
++++++++++++++++++++++++++++++++++++++
+Progress: resolved 274, reused 252, downloaded 0, added 37, done
+
+devDependencies:
++ eslint-plugin-prettier 5.0.1
+
+Done in 3.8s
+```
+
+:rocket:
