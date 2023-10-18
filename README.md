@@ -38,7 +38,6 @@ original configs coming from svelte cli, skeleton project with typescript, prett
 	},
 	"type": "module"
 }
-
 ```
 
 **.eslintrc.cjs**
@@ -148,25 +147,25 @@ this leads to a peer dependency warning with pnpm
 this leads to a peer dependency error with npm
 
 ```bash
-npm install -D eslint-plugin-prettier  
+npm install -D eslint-plugin-prettier
 npm ERR! code ERESOLVE
 npm ERR! ERESOLVE unable to resolve dependency tree
-npm ERR! 
+npm ERR!
 npm ERR! While resolving: air-es-svelte@0.0.1
 npm ERR! Found: prettier@2.8.8
 npm ERR! node_modules/prettier
 npm ERR!   dev prettier@"^2.8.0" from the root project
-npm ERR! 
+npm ERR!
 npm ERR! Could not resolve dependency:
 npm ERR! peer prettier@">=3.0.0" from eslint-plugin-prettier@5.0.1
 npm ERR! node_modules/eslint-plugin-prettier
 npm ERR!   dev eslint-plugin-prettier@"*" from the root project
-npm ERR! 
+npm ERR!
 npm ERR! Fix the upstream dependency conflict, or retry
 npm ERR! this command with --force or --legacy-peer-deps
 npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
-npm ERR! 
-npm ERR! 
+npm ERR!
+npm ERR!
 npm ERR! For a full report see:
 npm ERR! /home/user/.npm/_logs/2023-10-18T19_07_42_805Z-eresolve-report.txt
 
@@ -240,3 +239,35 @@ or
 `npx --yes npm-check-updates`
 
 `npx npm-check-updates -u`
+
+after the upgrade we install all packages
+
+`pnpm install`
+
+```bash
+Packages: +215
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 237, reused 215, downloaded 0, added 215, done
+
+devDependencies:
++ @sveltejs/adapter-auto 2.1.0
++ @sveltejs/kit 1.26.0
++ @typescript-eslint/eslint-plugin 6.8.0
++ @typescript-eslint/parser 6.8.0
++ eslint 8.51.0
++ eslint-config-prettier 9.0.0
++ eslint-plugin-svelte 2.34.0
++ prettier 3.0.3
++ prettier-plugin-svelte 3.0.3
++ svelte 4.2.1
++ svelte-check 3.5.2
++ tslib 2.6.2
++ typescript 5.2.2
++ vite 4.5.0
+
+Done in 5.1s
+```
+
+now we can install eslint-plugin-prettier as dev dependency without errors
+
+`pnpm install -D eslint-plugin-prettier`
