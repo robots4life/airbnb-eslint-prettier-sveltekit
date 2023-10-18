@@ -49,29 +49,29 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:svelte/recommended',
-		'prettier'
+		'prettier',
 	],
 	parser: '@typescript-eslint/parser',
 	plugins: ['@typescript-eslint'],
 	parserOptions: {
 		sourceType: 'module',
 		ecmaVersion: 2020,
-		extraFileExtensions: ['.svelte']
+		extraFileExtensions: ['.svelte'],
 	},
 	env: {
 		browser: true,
 		es2017: true,
-		node: true
+		node: true,
 	},
 	overrides: [
 		{
 			files: ['*.svelte'],
 			parser: 'svelte-eslint-parser',
 			parserOptions: {
-				parser: '@typescript-eslint/parser'
-			}
-		}
-	]
+				parser: '@typescript-eslint/parser',
+			},
+		},
+	],
 };
 ```
 
@@ -302,7 +302,7 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:svelte/recommended',
-		'plugin:prettier/recommended'
+		'plugin:prettier/recommended' // <=== 
 	],
 	parser: '@typescript-eslint/parser',
 	plugins: ['@typescript-eslint'],
@@ -327,3 +327,5 @@ module.exports = {
 	]
 };
 ```
+
+`ctrl + shift + p` Developer: Reload Window
