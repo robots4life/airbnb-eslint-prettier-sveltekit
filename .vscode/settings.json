@@ -1,0 +1,14 @@
+{
+	// ESLint
+	// https://github.com/sveltejs/eslint-plugin-svelte#computer-editor-integrations
+	"eslint.validate": ["javascript", "typescript", "svelte"]
+
+	// optinal setup
+	// "editor.defaultFormatter": "esbenp.prettier-vscode",
+	// "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+	// "editor.formatOnSave": true,
+	// https://github.com/microsoft/vscode-docs/blob/efa17ec71d755cf14c4722c7d05d10c538cb0e97/release-notes/v1_41.md#eslint
+	// "editor.codeActionsOnSave": {
+	// 	"source.fixAll.eslint": true
+	// },
+}

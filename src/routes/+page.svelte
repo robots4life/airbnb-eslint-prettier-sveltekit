@@ -1,2 +1,11 @@
+<script lang="ts">
+	import type { PageData } from './$types';
+	export let data: PageData;
+</script>
+
+{#if Object.keys(data).length !== 0}
+	<pre>{JSON.stringify(data, null, 2)}</pre>
+{/if}
+
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>

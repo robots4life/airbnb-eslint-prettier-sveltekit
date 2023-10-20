@@ -302,30 +302,79 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:svelte/recommended',
-		'plugin:prettier/recommended' // <=== 
+		'plugin:prettier/recommended', // <===
 	],
 	parser: '@typescript-eslint/parser',
 	plugins: ['@typescript-eslint'],
 	parserOptions: {
 		sourceType: 'module',
 		ecmaVersion: 2020,
-		extraFileExtensions: ['.svelte']
+		extraFileExtensions: ['.svelte'],
 	},
 	env: {
 		browser: true,
 		es2017: true,
-		node: true
+		node: true,
 	},
 	overrides: [
 		{
 			files: ['*.svelte'],
 			parser: 'svelte-eslint-parser',
 			parserOptions: {
-				parser: '@typescript-eslint/parser'
-			}
-		}
-	]
+				parser: '@typescript-eslint/parser',
+			},
+		},
+	],
 };
 ```
 
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=3050" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=3050</a>
+
 `ctrl + shift + p` Developer: Reload Window
+
+## 6.
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=3082" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=3082</a>
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=3465" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=3465</a>
+
+have linting in `script` tags of `svelte` files
+
+in the stream this does not work out of the box
+
+however it **does** work with the current repo out of the box because it uses `"eslint-plugin-svelte": "^2.34.0",` instead of `eslint-plugin-svelte3`
+
+<a href="https://github.com/sveltejs/eslint-plugin-svelte" target="_blank">https://github.com/sveltejs/eslint-plugin-svelte</a>
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=4481" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=4481</a>
+
+<a href="https://github.com/sveltejs/eslint-plugin-svelte#computer-editor-integrations" target="_blank">https://github.com/sveltejs/eslint-plugin-svelte#computer-editor-integrations</a>
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=4588" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=4588</a>
+
+**.vscode/settings.json**
+
+```json
+{
+	// ESLint
+	// https://github.com/sveltejs/eslint-plugin-svelte#computer-editor-integrations
+	"eslint.validate": ["javascript", "typescript", "svelte"]
+
+	// optinal setup
+	// "editor.defaultFormatter": "esbenp.prettier-vscode",
+	// "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+	// "editor.formatOnSave": true,
+	// https://github.com/microsoft/vscode-docs/blob/efa17ec71d755cf14c4722c7d05d10c538cb0e97/release-notes/v1_41.md#eslint
+	// "editor.codeActionsOnSave": {
+	// 	"source.fixAll.eslint": true
+	// },
+}
+```
+
+<a href="https://github.com/sveltejs/eslint-plugin-svelte#running-eslint-from-the-command-line" target="_blank">https://github.com/sveltejs/eslint-plugin-svelte#running-eslint-from-the-command-line</a>
+
+## 7.
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=4608" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=4608</a>
+
+add airbnb styleguide
