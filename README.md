@@ -440,3 +440,91 @@ add airbnb typescript config & style guide
 <a href="https://www.npmjs.com/package/eslint-config-airbnb-typescript" target="_blank">https://www.npmjs.com/package/eslint-config-airbnb-typescript</a>
 
 `npx install-peerdeps --dev eslint-config-airbnb-base`
+
+```bash
+npx install-peerdeps --dev eslint-config-airbnb-base
+install-peerdeps v3.0.3
+Installing peerdeps for eslint-config-airbnb-base@latest.
+npm install eslint-config-airbnb-base@15.0.0 eslint@^8.2.0 eslint-plugin-import@^2.25.2 --save-dev
+
+ERR undefined
+```
+
+<a href="https://stackoverflow.com/questions/66967270/err-undefined-while-installing-airbnb-eslint" target="_blank">https://stackoverflow.com/questions/66967270/err-undefined-while-installing-airbnb-eslint</a>
+
+deleted `/home/{user}/.npm/` folder
+
+deleted `node_modules` folder in project
+
+installed all packages using `npm`
+
+`npm install --verbose`
+
+works fine :thumbsup:
+
+then
+
+`npx install-peerdeps --dev eslint-config-airbnb-base`
+
+also works fine with result
+
+```bash
+npx install-peerdeps --dev eslint-config-airbnb-base
+Need to install the following packages:
+install-peerdeps@3.0.3
+Ok to proceed? (y) y
+npm WARN deprecated core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+npm WARN deprecated @babel/polyfill@7.12.1: 🚨 This package has been deprecated in favor of separate inclusion of a polyfill and regenerator-runtime (when needed). See the @babel/polyfill docs (https://babeljs.io/docs/en/babel-polyfill) for more information.
+install-peerdeps v3.0.3
+Installing peerdeps for eslint-config-airbnb-base@latest.
+npm install eslint-config-airbnb-base@15.0.0 eslint@^8.2.0 eslint-plugin-import@^2.25.2 --save-dev
+
+SUCCESS eslint-config-airbnb-base
+  and its peerDeps were installed successfully.
+```
+
+**so this means you need to use npm to install all packages** and **cannot use pnpm to install eslint-config-airbnb-base**
+
+after
+
+`npx install-peerdeps --dev eslint-config-airbnb-base`
+
+**package.json**
+
+```json
+{
+	"name": "airbnb-eslint-prettier-sveltekit",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"eslint": "eslint --ext .js,.cjs,.ts,.svelte . --fix",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^2.1.0",
+		"@sveltejs/kit": "^1.26.0",
+		"@typescript-eslint/eslint-plugin": "^6.8.0",
+		"@typescript-eslint/parser": "^6.8.0",
+		"eslint": "^8.51.0",
+		"eslint-config-airbnb-base": "^15.0.0", <== NEW
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-import": "^2.28.1", <== NEW
+		"eslint-plugin-prettier": "^5.0.1",
+		"eslint-plugin-svelte": "^2.34.0",
+		"prettier": "^3.0.3",
+		"prettier-plugin-svelte": "^3.0.3",
+		"svelte": "^4.2.1",
+		"svelte-check": "^3.5.2",
+		"tslib": "^2.6.2",
+		"typescript": "^5.2.2",
+		"vite": "^4.5.0"
+	},
+	"type": "module"
+}
+```
