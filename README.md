@@ -360,7 +360,7 @@ however it **does** work with the current repo out of the box because it uses `"
 	// https://github.com/sveltejs/eslint-plugin-svelte#computer-editor-integrations
 	"eslint.validate": ["javascript", "typescript", "svelte"]
 
-	// optinal setup
+	// optional setup
 	// "editor.defaultFormatter": "esbenp.prettier-vscode",
 	// "editor.defaultFormatter": "dbaeumer.vscode-eslint",
 	// "editor.formatOnSave": true,
@@ -378,3 +378,49 @@ however it **does** work with the current repo out of the box because it uses `"
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=4608" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=4608</a>
 
 add airbnb typescript config and style guide
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=4635" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=4635</a>
+
+```json
+{
+	"name": "airbnb-eslint-prettier-sveltekit",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"eslint": "eslint --ext .js,.cjs,.ts,.svelte . --fix",
+		"format": "prettier --plugin-search-dir . --write ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^2.1.0",
+		"@sveltejs/kit": "^1.26.0",
+		"@typescript-eslint/eslint-plugin": "^6.8.0",
+		"@typescript-eslint/parser": "^6.8.0",
+		"eslint": "^8.51.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-prettier": "^5.0.1",
+		"eslint-plugin-svelte": "^2.34.0",
+		"prettier": "^3.0.3",
+		"prettier-plugin-svelte": "^3.0.3",
+		"svelte": "^4.2.1",
+		"svelte-check": "^3.5.2",
+		"tslib": "^2.6.2",
+		"typescript": "^5.2.2",
+		"vite": "^4.5.0"
+	},
+	"type": "module"
+}
+```
+
+`npm run eslint`
+
+`pnpm run eslint`
+
+works, now both, lints and formats the code, including `.svelte` files
+
+:rocket: :heart:

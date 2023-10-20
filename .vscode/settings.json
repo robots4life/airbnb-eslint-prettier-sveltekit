@@ -3,7 +3,7 @@
 	// https://github.com/sveltejs/eslint-plugin-svelte#computer-editor-integrations
 	"eslint.validate": ["javascript", "typescript", "svelte"]
 
-	// optinal setup
+	// optional setup
 	// "editor.defaultFormatter": "esbenp.prettier-vscode",
 	// "editor.defaultFormatter": "dbaeumer.vscode-eslint",
 	// "editor.formatOnSave": true,

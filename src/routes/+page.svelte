@@ -1,6 +1,11 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	export let data: PageData;
+
+	// this should be marked by eslint
+	function something() {
+		return 42;
+	}
 </script>
 
 {#if Object.keys(data).length !== 0}
