@@ -452,6 +452,10 @@ ERR undefined
 
 <a href="https://stackoverflow.com/questions/66967270/err-undefined-while-installing-airbnb-eslint" target="_blank">https://stackoverflow.com/questions/66967270/err-undefined-while-installing-airbnb-eslint</a>
 
+:poop: :warning: **pnpm fails** :warning: :poop:
+
+<a href="https://github.com/robots4life/airbnb-eslint-prettier-sveltekit/blob/master/logs/pnpm-fails.log" target="_blank">https://github.com/robots4life/airbnb-eslint-prettier-sveltekit/blob/master/logs/pnpm-fails.log</a>
+
 deleted `/home/{user}/.npm/` folder
 
 deleted `node_modules` folder in project
@@ -460,7 +464,7 @@ installed all packages using `npm`
 
 `npm install --verbose`
 
-works fine :thumbsup:
+:heart: :rocket: :thumbsup: **npm works fine** :thumbsup: :rocket: :heart:
 
 then
 
