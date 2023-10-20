@@ -377,8 +377,6 @@ however it **does** work with the current repo out of the box because it uses `"
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=4608" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=4608</a>
 
-add airbnb typescript config and style guide
-
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=4635" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=4635</a>
 
 ```json
@@ -424,3 +422,21 @@ add airbnb typescript config and style guide
 works, now both, lints and formats the code, including `.svelte` files
 
 :rocket: :heart:
+
+## 8.
+
+add airbnb typescript config & style guide
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=4692" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=4692</a>
+
+<a href="https://github.com/airbnb/javascript" target="_blank">https://github.com/airbnb/javascript</a>
+
+<a href="https://www.npmjs.com/package/eslint-config-airbnb" target="_blank">https://www.npmjs.com/package/eslint-config-airbnb</a>
+
+**If you don't need React, see eslint-config-airbnb-base.**
+
+<a href="https://www.npmjs.com/package/eslint-config-airbnb-base" target="_blank">https://www.npmjs.com/package/eslint-config-airbnb-base</a>
+
+<a href="https://www.npmjs.com/package/eslint-config-airbnb-typescript" target="_blank">https://www.npmjs.com/package/eslint-config-airbnb-typescript</a>
+
+`npx install-peerdeps --dev eslint-config-airbnb-base`
