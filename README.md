@@ -377,4 +377,4 @@ however it **does** work with the current repo out of the box because it uses `"
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=4608" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=4608</a>
 
-add airbnb styleguide
+add airbnb typescript config and style guide
