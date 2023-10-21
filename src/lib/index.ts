@@ -8,6 +8,7 @@ function something() {
 // this should be marked by eslint airbnb style guide
 // eslint thinks this is fine
 // but we want arrow functions and implicit returns
+// https://youtu.be/y068wjb4XtI?feature=shared&t=5360
 [1, 2, 3].reduce(function (sum, value) {
 	return value + sum;
 });

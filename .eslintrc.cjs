@@ -4,6 +4,8 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:svelte/recommended',
+		'airbnb-base',
+		'airbnb-typescript/base',
 		'plugin:prettier/recommended',
 	],
 	parser: '@typescript-eslint/parser',
@@ -12,7 +14,11 @@ module.exports = {
 		sourceType: 'module',
 		ecmaVersion: 2020,
 		extraFileExtensions: ['.svelte'],
+		// https://github.com/vitejs/vite/issues/13747
+		project: './tsconfig.json',
 	},
+	// https://github.com/vitejs/vite/issues/13747
+	ignorePatterns: ['*.cjs'],
 	env: {
 		browser: true,
 		es2017: true,

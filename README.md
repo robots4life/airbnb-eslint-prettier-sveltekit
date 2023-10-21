@@ -532,3 +532,68 @@ after
 	"type": "module"
 }
 ```
+
+Add "extends": "airbnb-base" to your .eslintrc.
+
+<a href="https://www.npmjs.com/package/eslint-config-airbnb-typescript" target="_blank">https://www.npmjs.com/package/eslint-config-airbnb-typescript</a>
+
+`npm install eslint-config-airbnb-typescript --save-dev`
+
+alternatives to airbnb style guide
+
+<a href="https://standardjs.com/" target="_blank">https://standardjs.com/</a>
+
+<a href="https://github.com/xojs/xo" target="_blank">https://github.com/xojs/xo</a>
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=5282" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=5282</a>
+
+<a href="https://www.npmjs.com/package/eslint-config-airbnb-typescript#4-configure-the-eslint-typescript-parser" target="_blank">https://www.npmjs.com/package/eslint-config-airbnb-typescript#4-configure-the-eslint-typescript-parser</a>
+
+**.eslintrc.cjs**
+
+```js
+module.exports = {
+	root: true,
+	extends: [
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
+		'plugin:svelte/recommended',
+		'airbnb-base',								<== NEW
+		'airbnb-typescript/base',					<== NEW
+		'plugin:prettier/recommended',
+	],
+	parser: '@typescript-eslint/parser',
+	plugins: ['@typescript-eslint'],
+	parserOptions: {
+		sourceType: 'module',
+		ecmaVersion: 2020,
+		extraFileExtensions: ['.svelte'],
+		// https://github.com/vitejs/vite/issues/13747
+		project: './tsconfig.json',					<== NEW
+	},
+	// https://github.com/vitejs/vite/issues/13747
+	ignorePatterns: ['*.cjs'],						<== NEW
+	env: {
+		browser: true,
+		es2017: true,
+		node: true,
+	},
+	overrides: [
+		{
+			files: ['*.svelte'],
+			parser: 'svelte-eslint-parser',
+			parserOptions: {
+				parser: '@typescript-eslint/parser',
+			},
+		},
+	],
+};
+```
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=5360" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=5360</a>
+
+## 9.
+
+change rules
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=6399" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=6399</a>
