@@ -594,6 +594,6 @@ module.exports = {
 
 ## 9.
 
-change rules
-
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=6399" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=6399</a>
+
+now there is some rules that we need to disable
