@@ -858,4 +858,10 @@ solution
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=9049" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=9049</a>
 
+**absolute cathartic** :grin: <a href="https://dict.leo.org/german-english/cathartic" target="_blank">https://dict.leo.org/german-english/cathartic</a>
+
 ## 12 .
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=9137" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=9137</a>
+
+now let's check if we need to disable more rules.. :question:
