@@ -1019,3 +1019,44 @@ husky - pre-commit hook exited with code 1 (error)
 it prevented to make a commit because there is a linter error
 
 :rocket: :thumbsup:
+
+**.prettierrc**
+
+old
+
+```json
+{
+	"useTabs": true,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"semi": true,
+	"printWidth": 100,
+	"plugins": ["prettier-plugin-svelte"],
+	"pluginSearchDirs": ["."],
+	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
+}
+```
+
+new - remove `"plugins": ["prettier-plugin-svelte"],`
+
+```json
+{
+	"useTabs": true,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"semi": true,
+	"printWidth": 100,
+	"plugins": ["prettier-plugin-svelte"],
+	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
+}
+```
+
+also
+
+from
+
+`"format": "prettier --plugin-search-dir . --write .",`
+
+to
+
+`"format": "prettier --write .",`

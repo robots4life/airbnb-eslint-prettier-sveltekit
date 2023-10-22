@@ -11,9 +11,12 @@
 	export let data: PageData;
 
 	// this should be marked by eslint
+	// eslint-disable-next-line no-inner-declarations
 	function something() {
 		return 42;
 	}
+	// calling the function fixes the error
+	something();
 
 	// eslint now turns this
 	// [1, 2, 3].reduce((sum, value) => { return value + sum });

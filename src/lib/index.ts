@@ -4,6 +4,7 @@
 function something() {
 	return 42;
 }
+something();
 
 // this should be marked by eslint airbnb style guide
 // eslint thinks this is fine
