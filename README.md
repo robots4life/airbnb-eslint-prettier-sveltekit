@@ -878,6 +878,8 @@ ignore for now
 
 solution will be from <a href="https://github.com/CodingGarden/listd/blob/main/tsconfig.json" target="_blank">https://github.com/CodingGarden/listd/blob/main/tsconfig.json</a>
 
+from the future
+
 ```json
 "paths": {
 	"$/*": ["./src/*"],
@@ -887,6 +889,10 @@ solution will be from <a href="https://github.com/CodingGarden/listd/blob/main/t
 	"$app/*": ["./node_modules/@sveltejs/kit/types/index.d.ts"]
 },
 ```
+
+in this stream CJ does not figure it out, but it works with the above paths :heart: thank you CJ :heart:
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=12961" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=12961</a>
 
 ## 13.
 
