@@ -1,6 +1,10 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 
+	// Unable to resolve path to module '$lib/index'.eslint import/no-unresolved
+	import { time } from '$lib/index';
+	// console.log(time);
+
 	export let data: PageData;
 
 	// this should be marked by eslint

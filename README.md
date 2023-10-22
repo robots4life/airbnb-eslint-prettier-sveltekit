@@ -647,3 +647,17 @@ we also need to tell eslint about the `$lib` alias folder location
 		'arrow-body-style': ['error', 'as-needed'],
 	},
 ```
+
+## 10.
+
+now let's work on paths and the `$lib` alias
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=7110" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=7110</a>
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=7188" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=7188</a>
+
+<a href="https://www.npmjs.com/package/eslint-import-resolver-typescript" target="_blank">https://www.npmjs.com/package/eslint-import-resolver-typescript</a>
+
+`npm install -D eslint-import-resolver-typescript`
+
+`pnpm install -D eslint-import-resolver-typescript`

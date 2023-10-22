@@ -21,3 +21,5 @@ function something() {
 // if you like to have implicit return
 // 'arrow-body-style': ['error', 'as-needed'],
 [1, 2, 3].reduce((sum, value) => value + sum);
+
+export const time = new Date().getTime();

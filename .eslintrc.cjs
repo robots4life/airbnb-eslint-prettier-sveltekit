@@ -1,15 +1,3 @@
-/*
-
-		"paths": {
-			"$lib": [
-				"../src/lib"
-			],
-			"$lib/*": [
-				"../src/lib/*"
-			]
-		},
-*/
-
 module.exports = {
 	root: true,
 	extends: [
