@@ -936,9 +936,9 @@ so we want prettier-plugin-tailwindcss
 
 but we want to format the tailwindcss classes with eslint so we are going to to run prettier after eslint and in a pre commit hook
 
-<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=11967" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=11967</a>
-
 ## 14.
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=11967" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=11967</a>
 
 husky
 
@@ -947,3 +947,75 @@ for pre commit hooks
 <a href="https://www.npmjs.com/package/husky" target="_blank">https://www.npmjs.com/package/husky</a>
 
 `npm install husky --save-dev`
+
+<a href="https://github.com/typicode/husky" target="_blank">https://github.com/typicode/husky</a>
+
+<a href="https://typicode.github.io/husky/" target="_blank">https://typicode.github.io/husky/</a>
+
+<a href="https://typicode.github.io/husky/getting-started.html#install" target="_blank">https://typicode.github.io/husky/getting-started.html#install</a>
+
+`npx husky install`
+
+`npm pkg set scripts.prepare="husky install"`
+
+**package.json**
+
+```json
+	"scripts": {
+		"prepack": "husky install",
+```
+
+`npx husky add .husky/pre-commit "npm run format && npm run eslint"`
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=12385" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=12385</a>
+
+```bash
+git commit -m "test husky pre-commit with f
+ailed eslint"
+
+> airbnb-eslint-prettier-sveltekit@0.0.1 format
+> prettier --plugin-search-dir . --write .
+
+[warn] Ignored unknown option --plugin-search-dir=..
+[warn] Ignored unknown option { pluginSearchDirs: ["."] }.
+.eslintrc.cjs 64ms
+[warn] Ignored unknown option { pluginSearchDirs: ["."] }.
+.prettierrc 24ms
+[warn] Ignored unknown option { pluginSearchDirs: ["."] }.
+.vscode/settings.json 4ms
+[warn] Ignored unknown option { pluginSearchDirs: ["."] }.
+package.json 2ms
+[warn] Ignored unknown option { pluginSearchDirs: ["."] }.
+README.md 141ms
+[warn] Ignored unknown option { pluginSearchDirs: ["."] }.
+src/app.d.ts 157ms
+[warn] Ignored unknown option { pluginSearchDirs: ["."] }.
+src/app.html 51ms
+[warn] Ignored unknown option { pluginSearchDirs: ["."] }.
+src/lib/index.ts 18ms
+[warn] Ignored unknown option { pluginSearchDirs: ["."] }.
+svelte.config.js 6ms
+[warn] Ignored unknown option { pluginSearchDirs: ["."] }.
+tsconfig.json 3ms
+[warn] Ignored unknown option { pluginSearchDirs: ["."] }.
+vite.config.ts 4ms
+
+> airbnb-eslint-prettier-sveltekit@0.0.1 eslint
+> eslint --ext .js,.cjs,.ts,.svelte . --fix
+
+
+/airbnb-eslint-prettier-sveltekit/src/lib/index.ts
+  4:10  error  'something' is defined but never used  @typescript-eslint/no-unused-vars
+
+/airbnb-eslint-prettier-sveltekit/src/routes/+page.svelte
+  14:2   error  Move function declaration to program root  no-inner-declarations
+  14:11  error  'something' is defined but never used      @typescript-eslint/no-unused-vars
+
+✖ 3 problems (3 errors, 0 warnings)
+
+husky - pre-commit hook exited with code 1 (error)
+```
+
+it prevented to make a commit because there is a linter error
+
+:rocket: :thumbsup:
