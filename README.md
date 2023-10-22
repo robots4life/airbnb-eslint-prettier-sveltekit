@@ -1060,3 +1060,7 @@ from
 to
 
 `"format": "prettier --write .",`
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=12452" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=12452</a>
+
+pre-commit hooks work
