@@ -1076,3 +1076,13 @@ pre-commit hooks work
 :heart: :heart: :heart:
 
 :rocket: :rocket: :rocket:
+
+## 15.
+
+recommended extensions
+
+```json
+{
+	"recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "svelte.svelte-vscode"]
+}
+```
