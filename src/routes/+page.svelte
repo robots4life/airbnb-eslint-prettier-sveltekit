@@ -7,6 +7,15 @@
 	function something() {
 		return 42;
 	}
+
+	// eslint now turns this
+	// [1, 2, 3].reduce((sum, value) => { return value + sum });
+	// [1, 2, 3].reduce((sum, value) => {
+	// 	return value + sum;
+	// });
+
+	// into this, and it works, nice
+	[1, 2, 3].reduce((sum, value) => value + sum);
 </script>
 
 {#if Object.keys(data).length !== 0}

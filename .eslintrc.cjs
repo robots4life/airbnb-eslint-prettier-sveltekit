@@ -1,3 +1,15 @@
+/*
+
+		"paths": {
+			"$lib": [
+				"../src/lib"
+			],
+			"$lib/*": [
+				"../src/lib/*"
+			]
+		},
+*/
+
 module.exports = {
 	root: true,
 	extends: [
@@ -18,7 +30,7 @@ module.exports = {
 		project: './tsconfig.json',
 	},
 	// https://github.com/vitejs/vite/issues/13747
-	ignorePatterns: ['*.cjs'],
+	ignorePatterns: ['*.eslintrc.cjs'],
 	env: {
 		browser: true,
 		es2017: true,
@@ -33,4 +45,16 @@ module.exports = {
 			},
 		},
 	],
+	rules: {
+		'import/prefer-default-export': 0,
+		'import/no-mutable-exports': 0,
+		'no-param-reassign': 0,
+		'import/extensions': 0,
+		'import/no-extraneous-dependencies': 0,
+		// https://eslint.org/docs/latest/rules/prefer-arrow-callback
+		'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
+		// https://eslint.org/docs/latest/rules/arrow-body-style#never
+		// if you like to have implicit return
+		'arrow-body-style': ['error', 'never'],
+	},
 };

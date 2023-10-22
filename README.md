@@ -597,3 +597,53 @@ module.exports = {
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=6399" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=6399</a>
 
 now there is some rules that we need to disable
+
+```js
+	rules: {
+		'import/prefer-default-export': 0,
+		'import/no-mutable-exports': 0,
+		'no-param-reassign': 0,
+		'import/extensions': 0,
+		'import/no-extraneous-dependencies': 0,
+	},
+```
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=6504" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=6504</a>
+
+we also need to tell eslint about the `$lib` alias folder location
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=6632" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=6632</a>
+
+<a href="https://eslint.org/docs/latest/rules/prefer-arrow-callback" target="_blank">https://eslint.org/docs/latest/rules/prefer-arrow-callback</a>
+
+```js
+	rules: {
+		'import/prefer-default-export': 0,
+		'import/no-mutable-exports': 0,
+		'no-param-reassign': 0,
+		'import/extensions': 0,
+		'import/no-extraneous-dependencies': 0,
+		'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
+	},
+```
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=6862" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=6862</a>
+
+<a href="https://eslint.org/docs/latest/rules/arrow-body-style" target="_blank">https://eslint.org/docs/latest/rules/arrow-body-style</a>
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=7073" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=7073</a>
+
+```js
+	rules: {
+		'import/prefer-default-export': 0,
+		'import/no-mutable-exports': 0,
+		'no-param-reassign': 0,
+		'import/extensions': 0,
+		'import/no-extraneous-dependencies': 0,
+		// https://eslint.org/docs/latest/rules/prefer-arrow-callback
+		'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
+		// https://eslint.org/docs/latest/rules/arrow-body-style#never
+		// if you like to have implicit return
+		'arrow-body-style': ['error', 'never'],
+	},
+```
