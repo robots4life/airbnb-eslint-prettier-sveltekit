@@ -644,6 +644,6 @@ we also need to tell eslint about the `$lib` alias folder location
 		'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
 		// https://eslint.org/docs/latest/rules/arrow-body-style#never
 		// if you like to have implicit return
-		'arrow-body-style': ['error', 'never'],
+		'arrow-body-style': ['error', 'as-needed'],
 	},
 ```
