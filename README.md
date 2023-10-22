@@ -865,3 +865,85 @@ solution
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=9137" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=9137</a>
 
 now let's check if we need to disable more rules.. :question:
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=9281" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=9281</a>
+
+resolve `$app` path
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=9509" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=9509</a>
+
+ignore for now
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=10489" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=10489</a>
+
+solution will be from <a href="https://github.com/CodingGarden/listd/blob/main/tsconfig.json" target="_blank">https://github.com/CodingGarden/listd/blob/main/tsconfig.json</a>
+
+```json
+"paths": {
+	"$/*": ["./src/*"],
+	"$lib": ["./src/lib"],
+	"$lib/*": ["./src/lib/*"],
+	"$app": ["./node_modules/@sveltejs/kit/types"],
+	"$app/*": ["./node_modules/@sveltejs/kit/types/index.d.ts"]
+},
+```
+
+## 13.
+
+optional sorting of tailwindcss classes in html
+
+<a href="https://github.com/tailwindlabs/prettier-plugin-tailwindcss" target="_blank">https://github.com/tailwindlabs/prettier-plugin-tailwindcss</a>
+
+but we want to run it with eslint
+
+so we use
+
+<a href="https://www.npmjs.com/package/eslint-plugin-tailwindcss" target="_blank">https://www.npmjs.com/package/eslint-plugin-tailwindcss</a>
+
+<a href="https://www.npmjs.com/package/eslint-plugin-tailwindcss#installation" target="_blank">https://www.npmjs.com/package/eslint-plugin-tailwindcss#installation</a>
+
+`npm i -D eslint-plugin-tailwindcss`
+
+but that does not seem to be able to run with eslint-plugin-svelte
+
+<a href="https://github.com/sveltejs/eslint-plugin-svelte/issues/187" target="_blank">https://github.com/sveltejs/eslint-plugin-svelte/issues/187</a>
+
+<a href="https://github.com/francoismassart/eslint-plugin-tailwindcss/issues?q=is%3Aissue+svelte" target="_blank">https://github.com/francoismassart/eslint-plugin-tailwindcss/issues?q=is%3Aissue+svelte</a>
+
+so we want prettier-plugin-tailwindcss
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=11765" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=11765</a>
+
+`npm install -D prettier prettier-plugin-tailwindcss`
+
+**.prettierrc**
+
+```json
+{
+	"useTabs": true,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"semi": true,
+	"printWidth": 100,
+	"plugins": ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
+	"tailwindConfig": "./tailwind.config.js",
+	"pluginSearchDirs": ["."],
+	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
+}
+```
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=11814" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=11814</a>
+
+but we want to format the tailwindcss classes with eslint so we are going to to run prettier after eslint and in a pre commit hook
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=11967" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=11967</a>
+
+## 14.
+
+husky
+
+for pre commit hooks
+
+<a href="https://www.npmjs.com/package/husky" target="_blank">https://www.npmjs.com/package/husky</a>
+
+`npm install husky --save-dev`

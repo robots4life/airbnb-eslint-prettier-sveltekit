@@ -1,9 +1,12 @@
 <script lang="ts">
 	// Unable to resolve path to module '$lib/index'.eslint import/no-unresolved
 	import { time } from '$lib/index';
-	import type { PageData } from './$types';
-
 	// console.log(time);
+
+	// https://youtu.be/y068wjb4XtI?feature=shared&t=9281
+	import { enhance } from '$app/forms';
+
+	import type { PageData } from './$types';
 
 	export let data: PageData;
 
@@ -30,3 +33,6 @@
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
 {time}
+
+<!-- https://youtu.be/y068wjb4XtI?feature=shared&t=9281 -->
+<form action="POST" use:enhance></form>
