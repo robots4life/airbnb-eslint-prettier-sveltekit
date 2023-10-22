@@ -684,3 +684,178 @@ settings: {
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=7432" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=7432</a>
 
 we want the `.eslintrc.cjs` file **also** to be linted
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=7503" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=7503</a>
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=8045" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=8045</a>
+
+<a href="https://typescript-eslint.io/linting/troubleshooting/#i-get-errors-telling-me-eslint-was-configured-to-run--however-that-tsconfig-does-not--none-of-those-tsconfigs-include-this-file" target="_blank">https://typescript-eslint.io/linting/troubleshooting/#i-get-errors-telling-me-eslint-was-configured-to-run--however-that-tsconfig-does-not--none-of-those-tsconfigs-include-this-file</a>
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=8111" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=8111</a>
+
+**import export**
+
+commonjs
+
+<a href="https://en.wikipedia.org/wiki/CommonJS" target="_blank">https://en.wikipedia.org/wiki/CommonJS</a>
+
+vs
+
+js modules as defined in ecma script es6 (2015)
+
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules</a>
+
+**great explanation**
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=8213" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=8213</a>
+
+eslint supports common js so we have to use .eslintrc.cjs
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=8507" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=8507</a>
+
+we really do want to lint the .eslintrc.cjs file
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=8676" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=8676</a>
+
+**tsconfig.json**
+
+**outDir** has to be specified !!
+
+run
+
+`npm run build`
+
+and see that
+
+`.svelte-kit/output`
+
+is created !!
+
+```json
+{
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"outDir": ".svelte-kit/output",
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true
+	},
+	"include": [
+		"./.svelte-kit/ambient.d.ts",
+		"./.svelte-kit/./types/**/$types.d.ts",
+		"./src/**/*.js",
+		"./src/**/*.ts",
+		"./src/**/*.svelte",
+		"./tests/**/*.js",
+		"./tests/**/*.ts",
+		"./tests/**/*.svelte",
+		"*.cjs",
+		".*.cjs",
+		"*.js",
+		"*.ts"
+	]
+	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
+	//
+	// If you want to overwrite includes/excludes, make sure to copy over the relevant includes/excludes
+	// from the referenced tsconfig.json - TypeScript does not merge them in
+}
+```
+
+**.eslintrc.cjs**
+
+no more
+
+```js
+ignorePatterns: ['*.eslintrc.cjs'],
+```
+
+```js
+module.exports = {
+	root: true,
+	extends: [
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
+		'plugin:svelte/recommended',
+		'airbnb-base',
+		'airbnb-typescript/base',
+		'plugin:prettier/recommended',
+	],
+	parser: '@typescript-eslint/parser',
+	plugins: ['@typescript-eslint'],
+	parserOptions: {
+		sourceType: 'module',
+		ecmaVersion: 2020,
+		extraFileExtensions: ['.svelte'],
+		// https://github.com/vitejs/vite/issues/13747
+		project: './tsconfig.json',
+	},
+	// https://github.com/vitejs/vite/issues/13747
+	// https://youtu.be/y068wjb4XtI?feature=shared&t=7335
+	// let's not ignore common js files
+	// https://youtu.be/y068wjb4XtI?feature=shared&t=7432
+	// ignorePatterns: ['*.eslintrc.cjs'],
+	env: {
+		browser: true,
+		es2017: true,
+		node: true,
+	},
+	overrides: [
+		{
+			files: ['*.svelte'],
+			parser: 'svelte-eslint-parser',
+			parserOptions: {
+				parser: '@typescript-eslint/parser',
+			},
+		},
+	],
+	rules: {
+		'import/prefer-default-export': 0,
+		'import/no-mutable-exports': 0,
+		'no-param-reassign': 0,
+		'import/extensions': 0,
+		'import/no-extraneous-dependencies': 0,
+		// https://eslint.org/docs/latest/rules/prefer-arrow-callback
+		'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
+		// https://eslint.org/docs/latest/rules/arrow-body-style#never
+		// if you like to have implicit return
+		'arrow-body-style': ['error', 'as-needed'],
+		// turn on errors for missing imports
+		'import/no-unresolved': 'error',
+	},
+	// https://www.npmjs.com/package/eslint-import-resolver-typescript
+	settings: {
+		'import/parsers': {
+			'@typescript-eslint/parser': ['.cjs', '.js', '.ts', '.svelte'],
+		},
+		'import/resolver': {
+			typescript: {
+				alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+
+				// Choose from one of the "project" configs below or omit to use <root>/tsconfig.json by default
+
+				// use <root>/path/to/folder/tsconfig.json
+				// project: './tsconfig.json',
+			},
+		},
+	},
+};
+```
+
+no more <a href="https://typescript-eslint.io/linting/troubleshooting/#i-get-errors-telling-me-eslint-was-configured-to-run--however-that-tsconfig-does-not--none-of-those-tsconfigs-include-this-file" target="_blank">https://typescript-eslint.io/linting/troubleshooting/#i-get-errors-telling-me-eslint-was-configured-to-run--however-that-tsconfig-does-not--none-of-those-tsconfigs-include-this-file</a> error !!!
+
+:heart: :rocket: :thumbsup:
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=8978" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=8978</a>
+
+this is due to just having copy pasted the include paths from `.svelte-kit/tsconfig.json` and so when we choose the correct path by removing a dot in the path in the include paths in the `tsconfig.json` it works :boom: :heart:
+
+solution
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=9049" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=9049</a>
+
+## 12 .
