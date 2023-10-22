@@ -19,5 +19,5 @@ function something() {
 // https://youtu.be/y068wjb4XtI?feature=shared&t=7073
 // https://eslint.org/docs/latest/rules/arrow-body-style#never
 // if you like to have implicit return
-// 'arrow-body-style': ['error', 'never'],
+// 'arrow-body-style': ['error', 'as-needed'],
 [1, 2, 3].reduce((sum, value) => value + sum);
