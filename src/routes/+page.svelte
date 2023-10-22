@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-
 	// Unable to resolve path to module '$lib/index'.eslint import/no-unresolved
 	import { time } from '$lib/index';
+	import type { PageData } from './$types';
+
 	// console.log(time);
 
 	export let data: PageData;
@@ -28,3 +28,5 @@
 
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+
+{time}

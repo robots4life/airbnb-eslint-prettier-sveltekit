@@ -660,4 +660,27 @@ now let's work on paths and the `$lib` alias
 
 `npm install -D eslint-import-resolver-typescript`
 
-`pnpm install -D eslint-import-resolver-typescript`
+```js
+// https://www.npmjs.com/package/eslint-import-resolver-typescript
+settings: {
+	// 'import/parsers': {
+	// 	'@typescript-eslint/parser': ['.cjs', '.js', '.ts', '.svelte'],
+	// },
+	'import/resolver': {
+		typescript: {
+			alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+
+			// Choose from one of the "project" configs below or omit to use <root>/tsconfig.json by default
+
+			// use <root>/path/to/folder/tsconfig.json
+			// project: './tsconfig.json',
+		},
+	},
+},
+```
+
+## 11.
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=7432" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=7432</a>
+
+we want the `.eslintrc.cjs` file **also** to be linted
