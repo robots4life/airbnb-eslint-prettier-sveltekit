@@ -200,7 +200,7 @@ and see that directory
 
 is created !!
 
-we need an `outDir` and we also need to add the path alias to tsconfig
+we need an `outDir` and we also need to add the path alias to tsconfig and include all the file types
 
 ```json
 {
