@@ -108,7 +108,7 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:svelte/recommended',
-		'airbnb-base',						<== NEW
+		'airbnb-base',					<== NEW
 		'airbnb-typescript/base',			<== NEW
 		'plugin:prettier/recommended',
 	],
