@@ -108,8 +108,8 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:svelte/recommended',
-		'airbnb-base',								<== NEW
-		'airbnb-typescript/base',					<== NEW
+		'airbnb-base',						<== NEW
+		'airbnb-typescript/base',			<== NEW
 		'plugin:prettier/recommended',
 	],
 	parser: '@typescript-eslint/parser',
@@ -118,7 +118,7 @@ module.exports = {
 		sourceType: 'module',
 		ecmaVersion: 2020,
 		extraFileExtensions: ['.svelte'],
-		project: './tsconfig.json',					<== NEW
+		project: './tsconfig.json',			<== NEW
 	},
 	env: {
 		browser: true,
