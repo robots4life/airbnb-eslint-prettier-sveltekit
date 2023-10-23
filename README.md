@@ -1,4 +1,288 @@
-## 1.
+# short
+
+**1.**
+
+use npm
+
+**2.**
+
+```bash
+npm install -D eslint-plugin-prettier
+```
+
+**3.**
+
+add
+
+```bash
+plugin:prettier/recommended
+```
+
+as the last extension in your
+
+```bash
+.eslintrc.cjs
+```
+
+file
+
+**.eslintrc.cjs**
+
+```js
+module.exports = {
+	root: true,
+	extends: [
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
+		'plugin:svelte/recommended',
+		'plugin:prettier/recommended', // <===
+	],
+	parser: '@typescript-eslint/parser',
+	plugins: ['@typescript-eslint'],
+	parserOptions: {
+		sourceType: 'module',
+		ecmaVersion: 2020,
+		extraFileExtensions: ['.svelte'],
+	},
+	env: {
+		browser: true,
+		es2017: true,
+		node: true,
+	},
+	overrides: [
+		{
+			files: ['*.svelte'],
+			parser: 'svelte-eslint-parser',
+			parserOptions: {
+				parser: '@typescript-eslint/parser',
+			},
+		},
+	],
+};
+```
+
+**4.**
+
+<a href="https://github.com/sveltejs/eslint-plugin-svelte#computer-editor-integrations" target="_blank">https://github.com/sveltejs/eslint-plugin-svelte#computer-editor-integrations</a>
+
+**.vscode/settings.json**
+
+```json
+{
+	// ESLint
+	// https://github.com/sveltejs/eslint-plugin-svelte#computer-editor-integrations
+	"eslint.validate": ["javascript", "typescript", "svelte"]
+}
+```
+
+**5.**
+
+add npm script
+
+```bash
+"eslint": "eslint --ext .js,.cjs,.ts,.svelte . --fix",
+```
+
+**6.**
+
+<a href="https://www.npmjs.com/package/eslint-config-airbnb-base" target="_blank">https://www.npmjs.com/package/eslint-config-airbnb-base</a>
+
+```bash
+npx install-peerdeps --dev eslint-config-airbnb-base
+```
+
+<a href="https://www.npmjs.com/package/eslint-config-airbnb-typescript" target="_blank">https://www.npmjs.com/package/eslint-config-airbnb-typescript</a>
+
+```bash
+npm install eslint-config-airbnb-typescript --save-dev
+```
+
+<a href="https://www.npmjs.com/package/eslint-config-airbnb-typescript#4-configure-the-eslint-typescript-parser" target="_blank">https://www.npmjs.com/package/eslint-config-airbnb-typescript#4-configure-the-eslint-typescript-parser</a>
+
+**.eslintrc.cjs**
+
+```js
+module.exports = {
+	root: true,
+	extends: [
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
+		'plugin:svelte/recommended',
+		'airbnb-base',								<== NEW
+		'airbnb-typescript/base',					<== NEW
+		'plugin:prettier/recommended',
+	],
+	parser: '@typescript-eslint/parser',
+	plugins: ['@typescript-eslint'],
+	parserOptions: {
+		sourceType: 'module',
+		ecmaVersion: 2020,
+		extraFileExtensions: ['.svelte'],
+		project: './tsconfig.json',					<== NEW
+	},
+	env: {
+		browser: true,
+		es2017: true,
+		node: true,
+	},
+	overrides: [
+		{
+			files: ['*.svelte'],
+			parser: 'svelte-eslint-parser',
+			parserOptions: {
+				parser: '@typescript-eslint/parser',
+			},
+		},
+	],
+};
+```
+
+**7.**
+
+now there is some rules that we need to disable
+
+**.eslintrc.cjs**
+
+```js
+	rules: {
+		'import/prefer-default-export': 0,
+		'import/no-mutable-exports': 0,
+		'no-param-reassign': 0,
+		'import/extensions': 0,
+		'import/no-extraneous-dependencies': 0,
+		// https://eslint.org/docs/latest/rules/prefer-arrow-callback
+		'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
+		// https://eslint.org/docs/latest/rules/arrow-body-style#never
+		// if you like to have implicit return
+		'arrow-body-style': ['error', 'as-needed'],
+		// turn on errors for missing imports
+		'import/no-unresolved': 'error',
+	},
+```
+
+**8.**
+
+now let's add the `$app` and `$lib` path alias to eslint
+
+<a href="https://www.npmjs.com/package/eslint-import-resolver-typescript" target="_blank">https://www.npmjs.com/package/eslint-import-resolver-typescript</a>
+
+```bash
+npm install -D eslint-import-resolver-typescript
+```
+
+**.eslintrc.cjs**
+
+```js
+
+	settings: {
+		'import/parsers': {
+			'@typescript-eslint/parser': ['.cjs', '.js', '.ts', '.svelte'],
+		},
+		'import/resolver': {
+			typescript: {
+				alwaysTryTypes: true,
+			},
+		},
+	},
+```
+
+run
+
+```bash
+npm run build
+```
+
+and see that directory
+
+```bash
+.svelte-kit/output
+```
+
+is created !!
+
+we need an `outDir` and we also need to add the path alias to tsconfig
+
+```json
+{
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"outDir": ".svelte-kit/output",
+		"paths": {
+			"$/*": ["./src/*"],
+			"$lib": ["./src/lib"],
+			"$lib/*": ["./src/lib/*"],
+			"$app": ["./node_modules/@sveltejs/kit/types"],
+			"$app/*": ["./node_modules/@sveltejs/kit/types/index.d.ts"]
+		},
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true
+	},
+	"include": [
+		"./.svelte-kit/ambient.d.ts",
+		"./.svelte-kit/./types/**/$types.d.ts",
+		"./src/**/*.js",
+		"./src/**/*.ts",
+		"./src/**/*.svelte",
+		"./tests/**/*.js",
+		"./tests/**/*.ts",
+		"./tests/**/*.svelte",
+		"*.cjs",
+		".*.cjs",
+		"*.js",
+		"*.ts"
+	]
+	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
+	//
+	// If you want to overwrite includes/excludes, make sure to copy over the relevant includes/excludes
+	// from the referenced tsconfig.json - TypeScript does not merge them in
+}
+```
+
+**10.**
+
+<a href="https://prettier.io/blog/2023/07/05/3.0.0.html" 	target="_blank">https://prettier.io/blog/2023/07/05/3.0.0.html</a>
+
+remove
+
+```bash
+pluginSearchDirs
+```
+
+from prettier config and npm scripts
+
+**11.**
+
+optional, suggest recommended extensions
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=13400" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=13400</a>
+
+recommended extensions
+
+**.vscode/extensions.json**
+
+```json
+{
+	"recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "svelte.svelte-vscode"]
+}
+```
+
+---
+
+---
+
+---
+
+---
+
+long story
+
+# 1.
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=2609" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=2609</a>
 
@@ -89,7 +373,7 @@ module.exports = {
 }
 ```
 
-## 2.
+# 2.
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=2855" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=2855</a>
 
@@ -103,7 +387,7 @@ module.exports = {
 "semi": "true",
 ```
 
-## 3.
+# 3.
 
 prettier & eslint should be working together
 
@@ -111,7 +395,7 @@ prettier & eslint should be working together
 
 once we get them working together we will add the airbnb config
 
-## 4.
+# 4.
 
 integrating prettier with linters
 
@@ -285,7 +569,7 @@ Done in 3.8s
 
 :rocket:
 
-## 5.
+# 5.
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=3020" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=3020</a>
 
@@ -332,7 +616,7 @@ module.exports = {
 
 `ctrl + shift + p` Developer: Reload Window
 
-## 6.
+# 6.
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=3082" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=3082</a>
 
@@ -373,7 +657,7 @@ however it **does** work with the current repo out of the box because it uses `"
 
 <a href="https://github.com/sveltejs/eslint-plugin-svelte#running-eslint-from-the-command-line" target="_blank">https://github.com/sveltejs/eslint-plugin-svelte#running-eslint-from-the-command-line</a>
 
-## 7.
+# 7.
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=4608" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=4608</a>
 
@@ -423,7 +707,7 @@ works, now both, lints and formats the code, including `.svelte` files
 
 :rocket: :heart:
 
-## 8.
+# 8.
 
 add airbnb typescript config & style guide
 
@@ -592,7 +876,7 @@ module.exports = {
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=5360" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=5360</a>
 
-## 9.
+# 9.
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=6399" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=6399</a>
 
@@ -648,7 +932,7 @@ we also need to tell eslint about the `$lib` alias folder location
 	},
 ```
 
-## 10.
+# 10.
 
 now let's work on paths and the `$lib` alias
 
@@ -679,7 +963,7 @@ settings: {
 },
 ```
 
-## 11.
+# 11.
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=7432" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=7432</a>
 
@@ -860,7 +1144,7 @@ solution
 
 **absolute cathartic** :grin: <a href="https://dict.leo.org/german-english/cathartic" target="_blank">https://dict.leo.org/german-english/cathartic</a>
 
-## 12 .
+# 12.
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=9137" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=9137</a>
 
@@ -894,7 +1178,7 @@ in this stream CJ does not figure it out, but it works with the above paths :hea
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=12961" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=12961</a>
 
-## 13.
+# 13.
 
 optional sorting of tailwindcss classes in html
 
@@ -942,7 +1226,7 @@ so we want prettier-plugin-tailwindcss
 
 but we want to format the tailwindcss classes with eslint so we are going to to run prettier after eslint and in a pre commit hook
 
-## 14.
+# 14.
 
 <a href="https://youtu.be/y068wjb4XtI?feature=shared&t=11967" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=11967</a>
 
@@ -1077,9 +1361,13 @@ pre-commit hooks work
 
 :rocket: :rocket: :rocket:
 
-## 15.
+# 15.
+
+<a href="https://youtu.be/y068wjb4XtI?feature=shared&t=13400" target="_blank">https://youtu.be/y068wjb4XtI?feature=shared&t=13400</a>
 
 recommended extensions
+
+**.vscode/extensions.json**
 
 ```json
 {
